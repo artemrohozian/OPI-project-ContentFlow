@@ -6,11 +6,11 @@ function getRandomNumber(min, max) {
 
 function checkGuess(secret, guess) {
     if (guess > secret) {
-        return "Слишком большое число!";
+        return "Занадто велике число!";
     } else if (guess < secret) {
-        return "Слишком маленькое число!";
+        return "Занадто мале число!";
     } else {
-        return "Угадал 🎉";
+        return "Вгадав 🎉";
     }
 }
 
@@ -18,6 +18,5 @@ module.exports = {
     getRandomNumber,
     checkGuess
 };
-
 
 

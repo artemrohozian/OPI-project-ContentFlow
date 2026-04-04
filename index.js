@@ -8,7 +8,7 @@ const rl = readline.createInterface({
 
 const secretNumber = utils.getRandomNumber(1, 10);
 
-console.log("🎮 Игра: Угадай число от 1 до 10");
+console.log("🎮 Гра: Вгадай число від 1 до 10");
 
 function ask() {
     rl.question("Введи число: ", (answer) => {
@@ -17,7 +17,7 @@ function ask() {
 
         console.log(result);
 
-        if (result === "Угадал 🎉") {
+        if (result === "Вгадав 🎉") {
             rl.close();
         } else {
             ask();
