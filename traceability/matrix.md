@@ -1,6 +1,6 @@
 ## Пункт 6. Матриця трасовності
 **Виконала: Самбуріна Єва**
 
-![Traceability Matrix](traceability/matrix.png)
+![Traceability Matrix](./matrix.png)
 
 *Таблиця 2.2 — Матриця трасовності.*
