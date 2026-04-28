@@ -1,0 +1,62 @@
+На основі аналізу предметної області сервісу "ContentFlow" було виділено 6 основних класів.
+Опис класів:
+User (абстрактний базовий клас) — містить загальні атрибути для всіх користувачів системи.
+Client (наслідує User) — основний користувач (клієнт), який підключає сайти та ініціює створення контенту.
+Administrator (наслідує User) — користувач із правами управління системою та налаштуваннями.
+WordPressSite — клас, що описує підключений вебсайт та його статус.
+Preset — шаблон налаштувань (тональність тексту, мова), який застосовується до контенту.
+SEOContent — автоматично створений SEO-оптимізований контент (опис товару) для публікації.
+Код для генерації діаграми (PlantUML):
+@startuml
+abstract class User {
+  # email : String
+  # passwordHash : String
+  + login() : boolean
+  + logout() : void
+}
+
+class Client {
+  - clientId : int
+  - tariffPlan : String
+  + register() : void
+  + connectSite(url : String, apiKey : String) : boolean
+}
+
+class Administrator {
+  - adminId : int
+  + manageUsers() : void
+  + updateSettings() : void
+}
+
+class WordPressSite {
+  - siteId : int
+  - url : String
+  - isConnected : boolean
+  + deployContent(content : SEOContent) : boolean
+  + getStatus() : String
+}
+
+class Preset {
+  - presetId : int
+  - toneOfVoice : String
+  - language : String
+  + applyToContent() : void
+}
+
+class SEOContent {
+  - contentId : int
+  - title : String
+  - bodyText : String
+  + generateContent(keywords : String) : void
+}
+
+User <|-- Client
+User <|-- Administrator
+
+Client "1" -- "*" WordPressSite : manages
+Client "1" -- "*" Preset : creates
+Client "1" -- "*" SEOContent : generates
+
+Preset "1" o-- "*" SEOContent : defines style
+SEOContent "*" --> "1" WordPressSite : deployed to
+@enduml

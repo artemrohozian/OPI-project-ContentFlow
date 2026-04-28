@@ -1,0 +1,25 @@
+@startuml
+left to right direction
+actor "Клієнт" as Client
+actor "Адміністратор" as Admin
+
+rectangle "ContentFlow System" {
+  usecase "Авторизація в системі" as UC01
+  usecase "Підключення WP та моніторинг" as UC02
+  usecase "Створення кастомного пресету" as UC03
+  usecase "Генерація SEO-опису" as UC04
+  usecase "Розгортання в 1 клік" as UC05
+  usecase "Керування користувачами" as UC06
+
+  UC05 .> UC04 : <<include>>
+}
+
+Client --> UC01
+Client --> UC02
+Client --> UC03
+Client --> UC04
+Client --> UC05
+
+Admin --> UC01
+Admin --> UC06
+@enduml

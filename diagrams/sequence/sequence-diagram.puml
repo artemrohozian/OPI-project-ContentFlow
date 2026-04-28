@@ -1,0 +1,58 @@
+@startuml
+actor Користувач
+participant "Web UI" as UI
+participant "Backend" as BE
+participant "AI Service" as AI
+participant "WordPress API" as WP
+database DB
+
+Користувач -> UI : Вхід у систему
+activate UI
+UI -> BE : Авторизація
+activate BE
+BE --> UI : Успішний вхід
+deactivate BE
+UI --> Користувач : Dashboard
+
+Користувач -> UI : Ввести URL товару\nНатиснути Generate
+UI -> BE : sendProductData()
+activate BE
+
+BE -> DB : Зберегти запит
+activate DB
+DB --> BE : OK
+deactivate DB
+
+loop Для кожного товару
+    BE -> AI : generateSEODescription()
+    activate AI
+
+    alt Генерація успішна
+        AI --> BE : SEO опис
+        deactivate AI
+
+        BE -> WP : publishContent()
+        activate WP
+        WP --> BE : Published (200 OK)
+        deactivate WP
+
+        BE -> DB : saveHistory()
+        activate DB
+        DB --> BE : Saved
+        deactivate DB
+
+        BE --> UI : Показати результат
+
+    else Помилка генерації
+        AI --> BE : Error
+        deactivate AI
+
+        BE --> UI : Повідомлення про помилку
+    end
+end
+
+UI --> Користувач : Результат генерації
+deactivate BE
+deactivate UI
+
+@enduml
