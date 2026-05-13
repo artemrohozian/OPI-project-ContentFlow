@@ -31,3 +31,5 @@ class WordPressSite {
             : "Не підключено";
     }
 }
+
+module.exports = WordPressSite;

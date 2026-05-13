@@ -23,3 +23,5 @@ class SEOContent {
         console.log("Контент успішно згенеровано");
     }
 }
+
+module.exports = SEOContent;

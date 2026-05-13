@@ -1,3 +1,5 @@
+const User = require('./User');
+const WordPressSite = require('./WordPressSite');
 class Client extends User {
     constructor(clientId, email, passwordHash, tariffPlan) {
         super(email, passwordHash);
@@ -34,3 +36,5 @@ class Client extends User {
         }
     }
 }
+
+module.exports = Client;

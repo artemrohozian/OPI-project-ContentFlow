@@ -25,3 +25,5 @@ class User {
         console.log("Користувач вийшов із системи");
     }
 }
+
+module.exports = User;
