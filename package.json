@@ -4,7 +4,8 @@
   "description": "* Рогозян Артем В’ячеславович * Самбуріна Єва Богданівна * Старченко Олександр Сергійович",
   "main": "index.js",
   "scripts": {
-  "test": "jest"
+  "test": "jest",
+  "test:coverage": "jest --coverage"
 },
   "repository": {
     "type": "git",

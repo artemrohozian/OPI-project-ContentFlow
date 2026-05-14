@@ -1,3 +1,5 @@
+const User = require('./User');
+
 class Administrator extends User {
     constructor(adminId, email, passwordHash) {
         super(email, passwordHash);
@@ -13,3 +15,4 @@ class Administrator extends User {
         }
     }
 }
+module.exports = Administrator;

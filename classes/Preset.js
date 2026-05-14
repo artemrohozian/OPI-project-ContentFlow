@@ -10,3 +10,4 @@ class Preset {
             `\n\n[Мова: ${this.language}, Tone: ${this.toneOfVoice}]`;
     }
 }
+module.exports = Preset;
