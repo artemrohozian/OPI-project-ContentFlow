@@ -5,6 +5,7 @@ class Preset {
         this.language = language;
     }
 
+    // Додаємо налаштування мови та тону до тексту
     applyToContent(content) {
         content.bodyText +=
             `\n\n[Мова: ${this.language}, Tone: ${this.toneOfVoice}]`;
