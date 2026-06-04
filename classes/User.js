@@ -11,21 +11,24 @@ class User {
 
     // Метод для входу в систему
     login(inputEmail, inputPassword) {
-        // Перевіряємо, чи співпадають пошта і пароль
         if (
             inputEmail === this.email &&
             inputPassword === this.passwordHash
         ) {
-            console.log("Успішний вхід у систему");
-            return true;
+            return { success: true };
         }
 
-        console.log("Невірний email або пароль");
-        return false;
+        return {
+            success: false,
+            message: "Невірний email або пароль"
+        };
     }
 
     logout() {
-        console.log("Користувач вийшов із системи");
+        return {
+            success: true,
+            message: "Користувач вийшов із системи"
+        };
     }
 }
 module.exports = User;

@@ -4,9 +4,9 @@
   "description": "* Рогозян Артем В’ячеславович * Самбуріна Єва Богданівна * Старченко Олександр Сергійович",
   "main": "index.js",
   "scripts": {
-  "test": "jest",
-  "test:coverage": "jest --coverage"
-},
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/artemrohozian/OPI-project-ContentFlow.git"
@@ -19,6 +19,10 @@
   },
   "homepage": "https://github.com/artemrohozian/OPI-project-ContentFlow#readme",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "complexity-report": "^2.0.0-alpha",
+    "eslint": "^10.4.1",
+    "globals": "^17.6.0",
     "jest": "^30.4.2"
   }
 }
