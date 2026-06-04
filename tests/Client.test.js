@@ -1,5 +1,4 @@
 const Client = require('../classes/Client');
-const WordPressSite = require('../classes/WordPressSite');
 
 describe('Тестування методу connectSite класу Client', () => {
 
