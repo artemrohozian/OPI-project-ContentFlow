@@ -17,7 +17,7 @@ describe('Тестування класу Administrator', () => {
         expect(admin.adminId).toBe(1);
         expect(admin.email).toBe('admin@mail.com');
     });
-
+ 
     // Техніка: Позитивний, EP (Перевірка методу manageUsers)
     test('Метод manageUsers коректно обробляє список користувачів', () => {
 

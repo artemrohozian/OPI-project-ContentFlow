@@ -1,6 +1,10 @@
 const User = require('./User');
 const WordPressSite = require('./WordPressSite');
 
+
+function validateUrl(url){
+    return url.startsWith("https://");
+}
 class Client extends User {
     constructor(clientId, email, passwordHash, tariffPlan) {
         super(email, passwordHash);
@@ -13,12 +17,13 @@ class Client extends User {
     connectSite(url, apiKey) {
         try {
             // Перевіряємо, чи правильне посилання (умова)
-            if (!url || !url.startsWith("https://")) {
+            if (!url || !validateUrl(url)) {
                 throw new Error("Некоректний URL сайту");
             }
 
             // Перевіряємо довжину ключа (умова)
-            if (apiKey.length < 5) {
+            const MIN_API_KEY_LENGTH = 5;
+            if (apiKey.length < MIN_API_KEY_LENGTH) {
                 throw new Error("API ключ занадто короткий");
             }
 

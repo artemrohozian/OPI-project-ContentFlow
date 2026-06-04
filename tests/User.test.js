@@ -15,12 +15,12 @@ describe('Тестування абстрактного класу User', () => 
     test('Успішний логін з правильним email та паролем', () => {
         // Arrange
         const client = new Client(1, 'test@mail.com', 'pass123', 'Pro');
-
+ 
         // Act
         const result = client.login('test@mail.com', 'pass123');
 
         // Assert
-        expect(result).toBe(true);
+        expect(result.success).toBe(true);
     });
 
     // 3. Техніка: Негативний, EP (Неправильний пароль)
@@ -32,7 +32,8 @@ describe('Тестування абстрактного класу User', () => 
         const result = client.login('test@mail.com', 'wrong_pass');
 
         // Assert
-        expect(result).toBe(false);
+        expect(result.success).toBe(false);
+        expect(result.message).toBe('Невірний email або пароль');
     });
 
     // 4. Техніка: Негативний, EP (Неправильний email)
@@ -44,6 +45,7 @@ describe('Тестування абстрактного класу User', () => 
         const result = client.login('wrong@mail.com', 'pass123');
 
         // Assert
-        expect(result).toBe(false);
+        expect(result.success).toBe(false);
+        expect(result.message).toBe('Невірний email або пароль');
     });
 });

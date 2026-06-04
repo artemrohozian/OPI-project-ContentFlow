@@ -1,5 +1,4 @@
 const Client = require('../classes/Client');
-const WordPressSite = require('../classes/WordPressSite');
 
 describe('Тестування методу connectSite класу Client', () => {
 
@@ -17,7 +16,7 @@ describe('Тестування методу connectSite класу Client', () =
         expect(result).toBe(true);
         expect(client.sites.length).toBe(1);
     });
-
+ 
     // Техніка: Негативний, BVA (Граничне значення - порожній рядок)
     test('Помилка підключення, якщо URL порожній', () => {
         // Arrange (Підготовка)
