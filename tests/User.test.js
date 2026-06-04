@@ -15,7 +15,7 @@ describe('Тестування абстрактного класу User', () => 
     test('Успішний логін з правильним email та паролем', () => {
         // Arrange
         const client = new Client(1, 'test@mail.com', 'pass123', 'Pro');
-
+ 
         // Act
         const result = client.login('test@mail.com', 'pass123');
 

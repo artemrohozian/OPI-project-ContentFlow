@@ -19,7 +19,7 @@ describe('Тестування класу Preset', () => {
         const preset = new Preset(101, 'Дружній', 'EN');
         const content = new SEOContent(1, 'Смартфон');
         content.bodyText = "Купуйте новий телефон.";
-
+ 
         // Act
         preset.applyToContent(content);
 

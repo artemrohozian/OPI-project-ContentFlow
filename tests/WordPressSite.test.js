@@ -20,7 +20,7 @@ describe('Тестування методів класу WordPressSite', () => {
     test('Метод connect() змінює статус на "Підключено"', () => {
         // Arrange
         const site = new WordPressSite(1, 'https://mysite.com');
-
+ 
         // Act
         site.connect();
         const status = site.getStatus();
