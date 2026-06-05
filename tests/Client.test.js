@@ -13,3 +13,4 @@ describe('Тестування методу connectSite класу Client', () =
         expect(result).toBe(false);
     });
 });
+

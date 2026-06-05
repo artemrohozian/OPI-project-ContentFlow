@@ -24,3 +24,4 @@ describe('Тестування абстрактного класу User', () => 
         expect(result).toBe(true);
     });
 });
+
