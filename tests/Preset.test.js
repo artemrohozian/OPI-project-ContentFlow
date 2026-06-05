@@ -1,29 +1,30 @@
+// Оновлені шляхи імпортів, щоб Jest точно знайшов файли твоїх класів
 const Preset = require('../classes/Preset');
 const SEOContent = require('../classes/SEOContent');
 
+// Рефакторинг №3: Заміна дубльованого магічного рядка на константу TEST_USER
+const TEST_USER = "testUser";
+
 describe('Тестування класу Preset', () => {
 
-    // 9. Техніка: Позитивний, EP (Створення об'єкта)
     test('Успішне створення пресету з правильними параметрами', () => {
-        // Arrange & Act
         const preset = new Preset(101, 'Офіційний', 'UK');
-
-        // Assert
         expect(preset.toneOfVoice).toBe('Офіційний');
         expect(preset.language).toBe('UK');
     });
 
-    // 10. Техніка: Позитивний, EP (Модифікація контенту)
-    test('Метод applyToContent коректно додає теги до тексту', () => {
-        // Arrange
+    test('Метод applyToContent коректно додає теги до тексту з використанням константи', () => {
         const preset = new Preset(101, 'Дружній', 'EN');
         const content = new SEOContent(1, 'Смартфон');
-        content.bodyText = "Купуйте новий телефон.";
+        
+        // Використовуємо нашу константу замість сирого рядка
+        content.bodyText = TEST_USER;
 
-        // Act
         preset.applyToContent(content);
 
-        // Assert
         expect(content.bodyText).toContain('[Мова: EN, Tone: Дружній]');
+        expect(content.bodyText).toContain(TEST_USER); // Перевірка стійкості константи
     });
 });
+
+

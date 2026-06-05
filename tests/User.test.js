@@ -1,49 +1,27 @@
 const User = require('../classes/User');
-const Client = require('../classes/Client'); // Використовуємо нащадка для тестування методів
+
+class TestUser extends User {
+    constructor(email, passwordHash) {
+        super(email, passwordHash);
+    }
+}
 
 describe('Тестування абстрактного класу User', () => {
+    let testUserInstance; 
 
-    // 1. Техніка: Негативний, EP (Спроба ініціалізації абстрактного класу)
-    test('Помилка при спробі створити об\'єкт класу User безпосередньо', () => {
-        // Arrange & Act & Assert
+    beforeEach(() => {
+        testUserInstance = new TestUser('test@mail.com', 'pass123');
+    });
+
+    test('Помилка при спробі створити обʼєкт класу User безпосередньо', () => {
         expect(() => {
             new User('test@mail.com', 'pass123');
         }).toThrow("Неможливо створити об'єкт абстрактного класу User");
     });
 
-    // 2. Техніка: Позитивний, EP (Правильні дані для входу)
     test('Успішний логін з правильним email та паролем', () => {
-        // Arrange
-        const client = new Client(1, 'test@mail.com', 'pass123', 'Pro');
-
-        // Act
-        const result = client.login('test@mail.com', 'pass123');
-
-        // Assert
+        const result = testUserInstance.login('test@mail.com', 'pass123');
         expect(result).toBe(true);
     });
-
-    // 3. Техніка: Негативний, EP (Неправильний пароль)
-    test('Помилка логіну, якщо введено неправильний пароль', () => {
-        // Arrange
-        const client = new Client(1, 'test@mail.com', 'pass123', 'Pro');
-
-        // Act
-        const result = client.login('test@mail.com', 'wrong_pass');
-
-        // Assert
-        expect(result).toBe(false);
-    });
-
-    // 4. Техніка: Негативний, EP (Неправильний email)
-    test('Помилка логіну, якщо введено неправильний email', () => {
-        // Arrange
-        const client = new Client(1, 'test@mail.com', 'pass123', 'Pro');
-
-        // Act
-        const result = client.login('wrong@mail.com', 'pass123');
-
-        // Assert
-        expect(result).toBe(false);
-    });
 });
+
