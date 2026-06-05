@@ -5,11 +5,13 @@ class Preset {
         this.language = language;
     }
 
-    // Додаємо налаштування мови та тону до тексту
+    // Рефакторинг №1: Усунення прихованих побічних ефектів через повернення нового об'єкта
     applyToContent(content) {
-    return {
-        ...content,
-        bodyText: content.bodyText + `\n\n[Мова: ${this.language}, Tone: ${this.toneOfVoice}]`
-    };
-}
+        return {
+            ...content,
+            bodyText: content.bodyText + `\n\n[Мова: ${this.language}, Tone: ${this.toneOfVoice}]`
+        };
+    }
+} 
+
 module.exports = Preset;
