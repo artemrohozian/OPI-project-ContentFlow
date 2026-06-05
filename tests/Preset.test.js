@@ -5,10 +5,7 @@ describe('Тестування класу Preset', () => {
 
     // 9. Техніка: Позитивний, EP (Створення об'єкта)
     test('Успішне створення пресету з правильними параметрами', () => {
-        // Arrange & Act
         const preset = new Preset(101, 'Офіційний', 'UK');
-
-        // Assert
         expect(preset.toneOfVoice).toBe('Офіційний');
         expect(preset.language).toBe('UK');
     });
@@ -20,10 +17,20 @@ describe('Тестування класу Preset', () => {
         const content = new SEOContent(1, 'Смартфон');
         content.bodyText = "Купуйте новий телефон.";
 
-        // Act
-        preset.applyToContent(content);
+        // Act — ЗБЕРІГАЄМО новий об'єкт, який повертає метод після рефакторингу
+        const updatedContent = preset.applyToContent(content);
 
-        // Assert
-        expect(content.bodyText).toContain('[Мова: EN, Tone: Дружній]');
+        // Assert — ПЕРЕВІРЯЄМО саме оновлений об'єкт
+        expect(updatedContent.bodyText).toContain('[Мова: EN, Tone: Дружній]');
+    });
+
+    // Рефакторинг №3: Додано негативний сценарій
+    test('Негативний сценарій підключення', () => {
+        const mockSite = {
+            connect: (url) => {
+                if (url === "bad") throw new Error("Invalid URL");
+            }
+        };
+        expect(() => mockSite.connect("bad")).toThrow();
     });
 });

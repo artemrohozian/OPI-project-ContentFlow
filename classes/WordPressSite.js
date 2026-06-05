@@ -11,6 +11,12 @@ class WordPressSite {
 
     // Метод для публікації контенту
     deployContent(content) {
+        // РЕФАКТОРИНГ: Додано перевірку безпеки формату адреси сайту (https://)
+        if (!this.url || !this.url.startsWith("https://")) {
+            console.log("Помилка безпеки: деплой дозволено тільки через протокол https://");
+            return false;
+        }
+
         // Перевіряємо, чи взагалі підключений сайт
         if (!this.isConnected) {
             console.log("Сайт не підключений");
