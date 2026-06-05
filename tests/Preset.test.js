@@ -26,3 +26,4 @@ describe('Тестування класу Preset', () => {
         expect(content.bodyText).toContain(TEST_USER); // Перевірка стійкості константи
     });
 });
+
