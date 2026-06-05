@@ -6,7 +6,14 @@ class SEOContent {
     }
 
     // Метод для створення SEO-тексту
+    // Метод для створення SEO-тексту
     generateContent(keywords) {
+        // РЕФАКТОРИНГ: Додано захисну умову (guard clause) для валідації заголовка
+        if (!this.title || this.title.trim() === "") {
+            console.log("Помилка: заголовок порожній");
+            return;
+        }
+
         // Якщо масив слів порожній, то нічого не робимо
         if (!Array.isArray(keywords) || keywords.length === 0) {
             console.log("Список ключових слів порожній");

@@ -27,3 +27,4 @@ describe('Тестування класу Preset', () => {
         expect(content.bodyText).toContain('[Мова: EN, Tone: Дружній]');
     });
 });
+});

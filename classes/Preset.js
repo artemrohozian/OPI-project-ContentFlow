@@ -7,8 +7,9 @@ class Preset {
 
     // Додаємо налаштування мови та тону до тексту
     applyToContent(content) {
-        content.bodyText +=
-            `\n\n[Мова: ${this.language}, Tone: ${this.toneOfVoice}]`;
-    }
+    return {
+        ...content,
+        bodyText: content.bodyText + `\n\n[Мова: ${this.language}, Tone: ${this.toneOfVoice}]`
+    };
 }
 module.exports = Preset;
